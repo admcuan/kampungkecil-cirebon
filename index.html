@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kampung Kecil Cirebon - Resto Saung Tradisional Modern</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           1. CSS VARIABLES & SYSTEM RESET
+           ========================================================================== */
+        :root {
+            --bg-dark: #140a05;
+            --bg-surface: #24130a;
+            --bg-card: rgba(38, 20, 11, 0.94);
+            --wood-brown: #8e4917;
+            --wood-dark: #4a2307;
+            --wood-light: #c8742c;
+            --logo-yellow: #f5c21b;
+            --logo-yellow-dark: #ca9c09;
+            --leaf-green: #218a36;
+            --leaf-green-light: #32b34a;
+            --leaf-green-dark: #12541f;
+            --cream-bg: #fffdf5;
+            --glass-border: rgba(245, 194, 27, 0.22);
+            --text-light: #fefdfa;
+            --text-cream: #ede0d4;
+            --text-muted: #a39081;
+            --shadow-glow: 0 0 25px rgba(245, 194, 27, 0.25);
+            --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(142, 73, 23, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(33, 138, 54, 0.15) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4, h5, .brand-font {
+            font-family: 'Fredoka', cursive, sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--wood-brown); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--logo-yellow); }
+
+        /* ==========================================================================
+           2. LOGO STYLING (BRAND IMAGE)
+           ========================================================================== */
+        .brand-logo-img {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
+            transition: var(--transition-smooth);
+        }
+
+        .brand-logo-img:hover {
+            transform: scale(1.06);
+            filter: drop-shadow(0 6px 14px rgba(245, 194, 27, 0.5));
+        }
+
+        .hero-logo-img {
+            width: 320px;
+            max-width: 85%;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 12px 24px rgba(0,0,0,0.85)) drop-shadow(0 0 25px rgba(245, 194, 27, 0.35));
+            animation: logoFloat 5s ease-in-out infinite alternate;
+            transition: var(--transition-smooth);
+        }
+
+        .hero-logo-img:hover {
+            transform: scale(1.05) rotate(1deg);
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.95)) drop-shadow(0 0 35px rgba(245, 194, 27, 0.65));
+        }
+
+        @keyframes logoFloat {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-8px); }
+        }
+
+        .footer-logo-img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 0.8rem;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
+        }
+
+        /* ==========================================================================
+           3. HEADER & NAVIGATION
+           ========================================================================== */
+        header {
+            background: rgba(18, 9, 4, 0.95);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 0.6rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        nav a {
+            color: var(--text-cream);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--logo-yellow);
+            background: rgba(245, 194, 27, 0.12);
+            text-shadow: 0 0 10px rgba(245, 194, 27, 0.5);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--logo-yellow);
+            font-size: 1.3rem;
+            padding: 5px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .cart-trigger-btn {
+            position: relative;
+            background: rgba(245, 194, 27, 0.15);
+            border: 1px solid var(--logo-yellow);
+            color: var(--logo-yellow);
+            padding: 8px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+        }
+
+        .cart-trigger-btn:hover {
+            background: var(--logo-yellow);
+            color: #000;
+        }
+
+        .cart-badge {
+            background: var(--leaf-green);
+            color: #fff;
+            font-size: 0.75rem;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .btn-3d {
+            position: relative;
+            display: inline-block;
+            border: none;
+            background: transparent;
+            padding: 0;
+            cursor: pointer;
+            outline: none;
+            text-decoration: none;
+        }
+
+        .btn-3d-shadow {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            transform: translateY(4px);
+            transition: transform 200ms cubic-bezier(.3, .7, .4, 1);
+            filter: blur(3px);
+        }
+
+        .btn-3d-edge {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 12px;
+            background: linear-gradient(to left, var(--wood-dark) 0%, var(--logo-yellow-dark) 10%, var(--logo-yellow-dark) 90%, var(--wood-dark) 100%);
+        }
+
+        .btn-3d-front {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #110803;
+            background: linear-gradient(135deg, #ffe575, var(--logo-yellow));
+            transform: translateY(-4px);
+            transition: transform 200ms cubic-bezier(.3, .7, .4, 1), filter 200ms;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--logo-yellow);
+        }
+
+        .btn-3d-green .btn-3d-front {
+            background: linear-gradient(135deg, #32b34a, var(--leaf-green));
+            color: #ffffff;
+            border-color: #32b34a;
+        }
+
+        .btn-3d-green .btn-3d-edge { background: var(--leaf-green-dark); }
+        .btn-3d:hover .btn-3d-front { transform: translateY(-6px); filter: brightness(108%); }
+        .btn-3d:hover .btn-3d-shadow { transform: translateY(6px); }
+        .btn-3d:active .btn-3d-front { transform: translateY(-1px); }
+
+        .audio-control-btn {
+            background: rgba(46, 26, 15, 0.8);
+            border: 1px solid var(--glass-border);
+            color: var(--text-cream);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+        .audio-control-btn:hover { color: var(--logo-yellow); border-color: var(--logo-yellow); }
+
+        /* ==========================================================================
+           4. MAIN LAYOUT & ROUTING (SPA)
+           ========================================================================== */
+        main.main-content {
+            flex: 1;
+            padding-top: 70px;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 70px);
+        }
+
+        .page-view {
+            display: none;
+            opacity: 0;
+            width: 100%;
+        }
+
+        .page-view.active {
+            display: block;
+            animation: fadeInPage 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInPage {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--logo-yellow);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            margin-bottom: 0.4rem;
+        }
+
+        .section-header p {
+            color: var(--text-cream);
+            font-size: 0.95rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .wood-divider-3d {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.8rem 0 1.2rem 0;
+        }
+
+        .wood-divider-3d::before, .wood-divider-3d::after {
+            content: '';
+            height: 2px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, var(--wood-light), transparent);
+        }
+
+        .wood-divider-3d span {
+            color: var(--leaf-green-light);
+            padding: 0 12px;
+            font-size: 1.2rem;
+        }
+
+        .glass-card-section {
+            background: var(--bg-card);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+        .hero-actions-wrapper { display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+
+        /* ==========================================================================
+           5. PAGES SPECIFIC STYLES
+           ========================================================================== */
+        .hero-view {
+            min-height: calc(100vh - 70px);
+            background: 
+                linear-gradient(180deg, rgba(20, 10, 5, 0.65) 0%, rgba(20, 10, 5, 0.92) 100%),
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+
+        .hero-badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(33, 138, 54, 0.25);
+            border: 1px solid var(--leaf-green-light);
+            color: #53e070;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #53e070;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #53e070;
+            animation: pulseDot 1.8s infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .hero-view h1 {
+            font-size: 3.2rem;
+            color: var(--logo-yellow);
+            text-shadow: 0 3px 0 var(--wood-brown), 0 6px 0 var(--wood-dark);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-view p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-cream);
+            letter-spacing: 1.5px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .hero-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 800px;
+            width: 100%;
+            margin-top: 3rem;
+        }
+
+        .hero-stat-card {
+            background: rgba(36, 19, 10, 0.75);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .hero-stat-card .num { font-family: 'Fredoka', cursive; font-size: 2rem; color: var(--logo-yellow); }
+        .hero-stat-card .lbl { font-size: 0.75rem; color: var(--text-cream); text-transform: uppercase; }
+
+        /* Menu System */
+        .menu-filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            background: rgba(28, 14, 7, 0.8);
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .search-box-wrapper { position: relative; flex: 1; min-width: 240px; }
+        .search-box-wrapper input {
+            width: 100%;
+            padding: 10px 16px 10px 38px;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            background: rgba(15, 8, 4, 0.9);
+            color: #fff;
+            font-size: 0.88rem;
+            outline: none;
+        }
+        .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+        .category-pills { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 4px; }
+        .pill-btn {
+            background: rgba(46, 26, 15, 0.7);
+            border: 1px solid var(--glass-border);
+            color: var(--text-cream);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition-smooth);
+        }
+        .pill-btn.active, .pill-btn:hover { background: var(--logo-yellow); color: #110803; border-color: var(--logo-yellow); }
+
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+        .card-3d {
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-3d:hover { transform: translateY(-6px); border-color: var(--logo-yellow); box-shadow: var(--shadow-glow); }
+        .card-tag {
+            position: absolute; top: 10px; right: 10px; background: var(--leaf-green);
+            color: #fff; font-size: 0.68rem; font-weight: 800; padding: 3px 8px; border-radius: 8px; z-index: 2;
+        }
+        .card-img-wrapper { height: 170px; overflow: hidden; }
+        .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .card-3d:hover .card-img-wrapper img { transform: scale(1.08); }
+        .card-content { padding: 1.1rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .card-title { font-size: 1.05rem; color: var(--logo-yellow); margin-bottom: 0.4rem; }
+        .card-desc { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .card-footer-action { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top: 1px dashed rgba(245, 194, 27, 0.15); }
+        .card-price { font-size: 1.05rem; font-weight: 800; color: #fff; }
+        .card-price span { font-size: 0.7rem; color: var(--text-muted); font-weight: 400; }
+        
+        .add-cart-btn {
+            background: rgba(33, 138, 54, 0.2);
+            border: 1px solid var(--leaf-green-light);
+            color: #fff; padding: 6px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer;
+        }
+        .add-cart-btn:hover { background: var(--leaf-green); }
+
+        /* Calculator Event */
+        .calculator-box {
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem;
+            background: rgba(26, 13, 6, 0.85); border: 1px solid var(--glass-border); border-radius: 20px; padding: 1.8rem;
+        }
+        .calc-form-group { margin-bottom: 1rem; }
+        .calc-form-group label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--text-cream); margin-bottom: 0.3rem; }
+        .calc-select, .calc-input {
+            width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--glass-border);
+            background: rgba(12, 6, 3, 0.9); color: #fff; font-size: 0.88rem; outline: none;
+        }
+        .calc-summary-card {
+            background: linear-gradient(145deg, rgba(46, 26, 15, 0.9), rgba(20, 10, 5, 0.95));
+            border: 2px solid var(--logo-yellow); border-radius: 18px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .summary-title { font-size: 1.2rem; color: var(--logo-yellow); margin-bottom: 0.8rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 6px; }
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 0.6rem; font-size: 0.85rem; color: var(--text-cream); }
+        .summary-total { border-top: 2px dashed var(--wood-brown); padding-top: 0.8rem; margin-top: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
+        .summary-total .total-val { font-size: 1.6rem; font-weight: 800; color: var(--logo-yellow); font-family: 'Fredoka', cursive; }
+
+        /* Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem; }
+        .gallery-item { position: relative; border-radius: 16px; overflow: hidden; height: 200px; border: 1px solid var(--glass-border); cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-overlay {
+            position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+            display: flex; align-items: flex-end; padding: 0.8rem; opacity: 0; transition: var(--transition-smooth);
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay h4 { color: var(--logo-yellow); font-size: 0.9rem; }
+
+        /* FAQ */
+        .faq-accordion { display: flex; flex-direction: column; gap: 0.8rem; max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 14px; overflow: hidden; }
+        .faq-question { padding: 1rem 1.2rem; font-weight: 700; color: var(--logo-yellow); display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .faq-answer { padding: 0 1.2rem 1rem 1.2rem; font-size: 0.88rem; color: var(--text-cream); display: none; border-top: 1px solid rgba(245, 194, 27, 0.1); padding-top: 0.8rem; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+
+        /* Modals & Toasts */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 10001; justify-content: center; align-items: center; padding: 1rem; }
+        .modal-overlay.active { display: flex; }
+        .modal-box { background: var(--bg-surface); border: 2px solid var(--logo-yellow); border-radius: 20px; padding: 1.8rem; max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
+        .modal-close { position: absolute; top: 12px; right: 16px; background: none; border: none; color: var(--text-cream); font-size: 1.6rem; cursor: pointer; }
+
+        .toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 10002; display: flex; flex-direction: column; gap: 8px; }
+        .toast-msg { background: var(--bg-surface); border: 1px solid var(--leaf-green-light); color: #fff; padding: 10px 16px; border-radius: 12px; font-size: 0.82rem; }
+
+        /* Footer */
+        footer { background-color: #0b0502; border-top: 1px solid var(--glass-border); padding: 2.5rem 1.5rem 1.2rem 1.5rem; text-align: center; margin-top: auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.8rem; max-width: 1000px; margin: 0 auto 2rem auto; text-align: left; }
+        .footer-col h4 { color: var(--logo-yellow); font-size: 1rem; margin-bottom: 0.8rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.5rem; }
+        .footer-col ul li a { color: var(--text-cream); text-decoration: none; font-size: 0.82rem; cursor: pointer; }
+        .footer-col ul li a:hover { color: var(--logo-yellow); }
+        .footer-bottom { border-top: 1px solid rgba(245, 194, 27, 0.1); padding-top: 1.2rem; font-size: 0.78rem; color: var(--text-muted); }
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            header { padding: 0.6rem 1rem; }
+            .mobile-menu-btn { display: block; }
+            nav {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background: rgba(18, 9, 4, 0.98); flex-direction: column; gap: 0;
+                padding: 1rem; border-bottom: 1px solid var(--glass-border);
+            }
+            nav.mobile-active { display: flex; }
+            nav a { width: 100%; text-align: center; padding: 10px; border-radius: 6px; }
+            .hero-view h1 { font-size: 2.3rem; }
+            .grid-2col, .calculator-box { grid-template-columns: 1fr; }
+            .hero-stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BACKGROUND AUDIO PLAYER -->
+    <audio id="bgAudio" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=nature-sounds-birds-and-waterfall-115392.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- HEADER NAVIGATION -->
+    <header>
+        <a onclick="navigateTo('home')" class="logo-container">
+            <img src="logo-kampung-kecil.png" alt="Kampung Kecil Logo" class="brand-logo-img">
+        </a>
+
+        <!-- Navigation Links -->
+        <nav id="mainNav">
+            <a id="nav-home" class="active" onclick="navigateTo('home')">Beranda</a>
+            <a id="nav-kuliner" onclick="navigateTo('kuliner')">Daftar Menu</a>
+            <a id="nav-estimator" onclick="navigateTo('estimator')">Kalkulator Acara</a>
+            <a id="nav-galeri" onclick="navigateTo('galeri')">Galeri</a>
+            <a id="nav-tentang" onclick="navigateTo('tentang')">Tentang Kami</a>
+            <a id="nav-lokasi" onclick="navigateTo('lokasi')">Lokasi & FAQ</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="audio-control-btn" id="audioToggleBtn" onclick="toggleAudio()" title="Sound Suasana">
+                🔊
+            </button>
+
+            <button class="cart-trigger-btn" onclick="openCartModal()">
+                🛒 <span class="cart-badge" id="cartCount">0</span>
+            </button>
+
+            <button onclick="openBookingModal()" class="btn-3d">
+                <span class="btn-3d-shadow"></span>
+                <span class="btn-3d-edge"></span>
+                <span class="btn-3d-front">RESERVASI</span>
+            </button>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileNav()">☰</button>
+        </div>
+    </header>
+
+    <!-- MAIN SPA CONTENT CONTAINER -->
+    <main class="main-content">
+
+        <!-- PAGE 1: BERANDA -->
+        <div id="page-home" class="page-view active">
+            <section class="hero-view">
+                <div class="hero-badge-status">
+                    <span class="status-dot"></span> Buka Hari Ini • 10.00 - 22.00 WIB
+                </div>
+
+                <img src="logo-kampung-kecil.png" alt="Kampung Kecil Cirebon" class="hero-logo-img">
+
+                <h1>KAMPUNG KECIL CIREBON</h1>
+                <p class="subtitle">RESTO SAUNG TRADISIONAL SUNDA & KULINER NUSANTARA</p>
+
+                <div class="wood-divider-3d"><span>🍃</span></div>
+
+                <div class="hero-actions-wrapper">
+                    <button onclick="navigateTo('kuliner')" class="btn-3d btn-3d-green">
+                        <span class="btn-3d-shadow"></span>
+                        <span class="btn-3d-edge"></span>
+                        <span class="btn-3d-front" style="padding: 12px 24px;">PESAN ONLINE NOW ➔</span>
+                    </button>
+                    <button onclick="navigateTo('estimator')" class="btn-3d">
+                        <span class="btn-3d-shadow"></span>
+                        <span class="btn-3d-edge"></span>
+                        <span class="btn-3d-front" style="padding: 12px 24px;">ESTIMASI BIAYA ACARA 📊</span>
+                    </button>
+                </div>
+
+                <div class="hero-stats-grid">
+                    <div class="hero-stat-card">
+                        <div class="num">50+</div>
+                        <div class="lbl">Saung Lesehan Air</div>
+                    </div>
+                    <div class="hero-stat-card">
+                        <div class="num">4.9 ★</div>
+                        <div class="lbl">Google Reviews Rating</div>
+                    </div>
+                    <div class="hero-stat-card">
+                        <div class="num">100%</div>
+                        <div class="lbl">Halal & Bahan Fresh</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGE 2: MENU & PEMESANAN -->
+        <div id="page-kuliner" class="page-view">
+            <section class="container">
+                <div class="section-header">
+                    <h2>DAFTAR MENU & PEMESANAN ONLINE</h2>
+                    <p>Pilih menu favorit Anda dan masukkan ke keranjang untuk pesan langsung via WhatsApp.</p>
+                    <div class="wood-divider-3d"><span>🍃</span></div>
+                </div>
+
+                <div class="menu-filter-bar">
+                    <div class="search-box-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="menuSearchInput" oninput="filterMenuItems()" placeholder="Cari menu gurame, ayam, lele, minuman...">
+                    </div>
+                    <div class="category-pills">
+                        <button class="pill-btn active" onclick="filterCategory('all', this)">Semua Menu</button>
+                        <button class="pill-btn" onclick="filterCategory('gurame', this)">Gurame</button>
+                        <button class="pill-btn" onclick="filterCategory('ayam', this)">Ayam & Bebek</button>
+                        <button class="pill-btn" onclick="filterCategory('lele', this)">Lele & Patin</button>
+                        <button class="pill-btn" onclick="filterCategory('bancakan', this)">Paket Bancakan</button>
+                        <button class="pill-btn" onclick="filterCategory('minuman', this)">Minuman</button>
+                    </div>
+                </div>
+
+                <div class="cards-grid" id="menuGrid"></div>
+            </section>
+        </div>
+
+        <!-- PAGE 3: KALKULATOR EVENT -->
+        <div id="page-estimator" class="page-view">
+            <section class="container">
+                <div class="section-header">
+                    <h2>KALKULATOR ESTIMASI BIAYA ACARA</h2>
+                    <p>Hitung estimasi budget untuk acara ulang tahun, arisan, atau gathering perusahaan Anda secara instant.</p>
+                    <div class="wood-divider-3d"><span>🍃</span></div>
+                </div>
+
+                <div class="calculator-box">
+                    <div>
+                        <div class="calc-form-group">
+                            <label>Jenis Acara</label>
+                            <select id="calcEventType" class="calc-select" onchange="calculateEventCost()">
+                                <option value="ultah">Ulang Tahun / Syukuran</option>
+                                <option value="arisan">Arisan Keluarga</option>
+                                <option value="gathering">Corporate / Office Gathering</option>
+                                <option value="reuni">Reuni Sekolah / Komunitas</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-form-group">
+                            <label>Pilihan Paket Santap</label>
+                            <select id="calcPackage" class="calc-select" onchange="calculateEventCost()">
+                                <option value="45000">Paket Hemat (Ayam Cobek + Es Teh + Sayur Asem) - Rp 45.000 / pax</option>
+                                <option value="75000">Paket Premium (Gurame Pedas Manis + Ayam + Es Teh) - Rp 75.000 / pax</option>
+                                <option value="95000">Paket Bancakan Lengkap Komplit - Rp 95.000 / pax</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-form-group">
+                            <label>Jumlah Tamu / Undangan (Orang)</label>
+                            <input type="number" id="calcPax" class="calc-input" value="20" min="5" max="500" oninput="calculateEventCost()">
+                        </div>
+
+                        <div class="calc-form-group">
+                            <label>Opsi Tambahan</label>
+                            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 5px;">
+                                <label style="font-weight: 400; font-size: 0.85rem;"><input type="checkbox" id="addVIP" onchange="calculateEventCost()"> Ruang VIP AC (+ Rp 250.000)</label>
+                                <label style="font-weight: 400; font-size: 0.85rem;"><input type="checkbox" id="addSound" onchange="calculateEventCost()"> Standard Sound System & Mic (+ Rp 150.000)</label>
+                                <label style="font-weight: 400; font-size: 0.85rem;"><input type="checkbox" id="addDecoration" onchange="calculateEventCost()"> Dekorasi Basic Balon/Bunga (+ Rp 350.000)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calc-summary-card">
+                        <div>
+                            <div class="summary-title">Rincian Estimasi Budget</div>
+                            <div class="summary-row">
+                                <span>Estimasi Biaya Makanan:</span>
+                                <span id="summaryFoodCost">Rp 900.000</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Biaya Layanan & Saung:</span>
+                                <span id="summaryServiceCost">Rp 0</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Estimasi Fasilitas Tambahan:</span>
+                                <span id="summaryAddonsCost">Rp 0</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="summary-total">
+                                <span>TOTAL ESTIMASI:</span>
+                                <div class="total-val" id="summaryTotalVal">Rp 900.000</div>
+                            </div>
+                            <button onclick="bookEventFromCalc()" class="btn-3d btn-3d-green" style="width: 100%; margin-top: 1.2rem;">
+                                <span class="btn-3d-shadow"></span>
+                                <span class="btn-3d-edge"></span>
+                                <span class="btn-3d-front" style="width: 100%;">AJUKAN RESERVASI ACARA ➔</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGE 4: GALERI -->
+        <div id="page-galeri" class="page-view">
+            <section class="container">
+                <div class="section-header">
+                    <h2>GALERI SUASANA SAUNG</h2>
+                    <p>Intip keasrian arsitektur bambu dan suasana kolam di Kampung Kecil Cirebon.</p>
+                    <div class="wood-divider-3d"><span>🍃</span></div>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Saung Malam">
+                        <div class="gallery-overlay"><h4>Pendar Cahaya Saung Malam</h4></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Lesehan Air">
+                        <div class="gallery-overlay"><h4>Saung Terapung Atas Kolam</h4></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?auto=format&fit=crop&w=600&q=80" alt="Hidangan Bancakan">
+                        <div class="gallery-overlay"><h4>Santap Bancakan Rombongan</h4></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" alt="Gurame Bakar">
+                        <div class="gallery-overlay"><h4>Olahan Gurame Khas</h4></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGE 5: TENTANG KAMI -->
+        <div id="page-tentang" class="page-view">
+            <section class="container">
+                <div class="glass-card-section">
+                    <div class="section-header">
+                        <h2>TENTANG KAMPUNG KECIL CIREBON</h2>
+                        <p>Paduan Keharmonisan Arsitektur Bambu Alami, Gemericik Air Kolam, dan Cita Rasa Kuliner Sunda Autentik.</p>
+                        <div class="wood-divider-3d"><span>🍃</span></div>
+                    </div>
+
+                    <div class="grid-2col">
+                        <div>
+                            <h3 style="color: var(--logo-yellow); font-size: 1.5rem; margin-bottom: 1rem;">Filosofi Saung Lesehan</h3>
+                            <p style="color: var(--text-cream); margin-bottom: 1rem;">Kampung Kecil Cirebon dirancang khusus untuk menghadirkan kembali kenikmatan suasana pedesaan Sunda yang asri di tengah kota Cirebon.</p>
+                            <p style="color: var(--text-cream);">Dengan gazebo saung bambu terapung di atas kolam ikan serta tata pencahayaan temaram yang hangat di malam hari, resto kami menjadi pilihan utama santap keluarga, gathering kantor, hingga acara kumpul arisan.</p>
+                        </div>
+                        <div style="border-radius: 18px; overflow: hidden; border: 2px solid var(--glass-border);">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Suasana Saung Resto" style="width: 100%; height: 300px; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGE 6: LOKASI & FAQ -->
+        <div id="page-lokasi" class="page-view">
+            <section class="container">
+                <div class="section-header">
+                    <h2>LOKASI & PERTANYAAN UMUM</h2>
+                    <p>Temukan alamat resto dan jawaban atas pertanyaan yang sering diajukan.</p>
+                    <div class="wood-divider-3d"><span>🍃</span></div>
+                </div>
+
+                <div class="grid-2col" style="margin-bottom: 3rem;">
+                    <iframe 
+                        style="width: 100%; height: 320px; border-radius: 18px; border: 2px solid var(--wood-brown);"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.423719875883!2d108.5663731!3d-6.7180295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ee38a9f9c62cb%3A0x801012f9e6f947f0!2sKampung%20Kecil%20Cirebon!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                        allowfullscreen="" loading="lazy">
+                    </iframe>
+
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="background: var(--bg-surface); padding: 1.2rem; border-radius: 14px; border: 1px solid var(--glass-border);">
+                            <h4 style="color: var(--logo-yellow);">📍 Alamat Resto</h4>
+                            <p style="font-size: 0.88rem; color: var(--text-cream);">Jl. Sisingamangaraja, Panjunan, Kec. Lemahwungkuk, Kota Cirebon, Jawa Barat 45112</p>
+                        </div>
+                        <div style="background: var(--bg-surface); padding: 1.2rem; border-radius: 14px; border: 1px solid var(--glass-border);">
+                            <h4 style="color: var(--logo-yellow);">📱 WhatsApp Official</h4>
+                            <p style="font-size: 0.88rem; color: var(--text-cream);">+62 811-9739-222</p>
+                        </div>
+                        <div style="background: var(--bg-surface); padding: 1.2rem; border-radius: 14px; border: 1px solid var(--glass-border);">
+                            <h4 style="color: var(--logo-yellow);">🕒 Jam Operasional</h4>
+                            <p style="font-size: 0.88rem; color: var(--text-cream);">Setiap Hari: 10:00 - 22:00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-accordion">
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>Apakah tempat resto ini 100% Halal?</span>
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            Ya, seluruh bahan baku dan proses pengolahan makanan di Kampung Kecil Cirebon dijamin Halal, tanpa alkohol dan bahan non-halal.
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>Apakah perlu melakukan reservasi terlebih dahulu sebelum datang?</span>
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            Untuk hari kerja (Monday-Friday) Anda bisa langsung datang (*walk-in*). Namun untuk *weekend* atau acara rombongan di atas 10 orang, sangat disarankan melakukan reservasi saung melalui website ini agar tidak perlu mengantre.
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>Apakah tersedia fasilitas mushola dan tempat parkir luas?</span>
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            Tentu! Kami menyediakan Mushola yang bersih dan nyaman lengkap dengan tempat wudhu terpisah, serta area parkir mobil dan motor yang luas dan terjaga aman.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- MODAL: SHOPPING CART -->
+    <div id="cartModal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeCartModal()">&times;</button>
+            <h3 style="color: var(--logo-yellow); font-size: 1.4rem; text-align: center;">🛒 KERANJANG PESANAN ONLINE</h3>
+            
+            <div class="cart-items-list" id="cartItemsContainer"></div>
+
+            <div style="border-top: 1px dashed var(--glass-border); padding-top: 1rem; margin-top: 1rem;">
+                <div class="flex-between" style="font-weight: 800; font-size: 1rem; color: #fff; margin-bottom: 1rem;">
+                    <span>SUBTOTAL:</span>
+                    <span id="cartSubtotal" style="color: var(--logo-yellow);">Rp 0</span>
+                </div>
+
+                <button onclick="checkoutCartToWA()" class="btn-3d btn-3d-green" style="width: 100%;">
+                    <span class="btn-3d-shadow"></span>
+                    <span class="btn-3d-edge"></span>
+                    <span class="btn-3d-front" style="width: 100%;">KIRIM PESANAN VIA WHATSAPP ➔</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: RESERVASI / BOOKING -->
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+            <h3 style="color: var(--logo-yellow); font-size: 1.4rem; text-align: center; margin-bottom: 1rem;">FORM RESERVASI SAUNG</h3>
+            
+            <form onsubmit="submitBookingWA(event)">
+                <div style="margin-bottom: 0.8rem;">
+                    <label style="font-size: 0.82rem; color: var(--text-cream); display: block; margin-bottom: 4px;">Nama Lengkap</label>
+                    <input type="text" id="bookName" class="calc-input" required placeholder="Masukkan nama Anda">
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-bottom: 0.8rem;">
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.82rem; color: var(--text-cream); display: block; margin-bottom: 4px;">Tanggal</label>
+                        <input type="date" id="bookDate" class="calc-input" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.82rem; color: var(--text-cream); display: block; margin-bottom: 4px;">Jam</label>
+                        <input type="time" id="bookTime" class="calc-input" required>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 0.8rem;">
+                    <label style="font-size: 0.82rem; color: var(--text-cream); display: block; margin-bottom: 4px;">Jumlah Pax / Orang</label>
+                    <input type="number" id="bookGuests" class="calc-input" value="4" min="1" required>
+                </div>
+
+                <div style="margin-bottom: 1.2rem;">
+                    <label style="font-size: 0.82rem; color: var(--text-cream); display: block; margin-bottom: 4px;">Catatan Khusus / Pilihan Saung</label>
+                    <textarea id="bookNotes" class="calc-input" rows="2" placeholder="Contoh: Saung lesehan pinggir kolam, minta baby chair"></textarea>
+                </div>
+
+                <button type="submit" class="btn-3d btn-3d-green" style="width: 100%;">
+                    <span class="btn-3d-shadow"></span>
+                    <span class="btn-3d-edge"></span>
+                    <span class="btn-3d-front" style="width: 100%;">KONFIRMASI VIA WHATSAPP ➔</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <img src="logo-kampung-kecil.png" alt="Kampung Kecil Logo" class="footer-logo-img"><br>
+                <p style="font-size: 0.8rem; color: var(--text-cream);">Resto saung tradisional Sunda dengan pengalaman kuliner istimewa di Cirebon.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigasi Cepat</h4>
+                <ul>
+                    <li><a onclick="navigateTo('home')">Beranda</a></li>
+                    <li><a onclick="navigateTo('kuliner')">Daftar Menu</a></li>
+                    <li><a onclick="navigateTo('estimator')">Kalkulator Acara</a></li>
+                    <li><a onclick="navigateTo('galeri')">Galeri Foto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Fasilitas Utama</h4>
+                <ul>
+                    <li><a href="#">Saung Lesehan Kolam Air</a></li>
+                    <li><a href="#">Ruang VIP Ber-AC</a></li>
+                    <li><a href="#">Paket Bancakan Rombongan</a></li>
+                    <li><a href="#">Area Parkir & Mushola</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Kampung Kecil Cirebon. All Rights Reserved. Designed for Ultimate Sundanese Culinary Experience.
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT ENGINE -->
+    <script>
+        const menuData = [
+            { id: 'g1', name: 'Gurame Pedas Manis', category: 'gurame', price: 68000, tag: 'Terfavorit', desc: 'Ikan gurame segar digoreng garing disiram saus pedas manis istimewa.', img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80' },
+            { id: 'g2', name: 'Gurame Asam Manis', category: 'gurame', price: 68000, tag: 'Spesial', desc: 'Daging gurame renyah bercampur saus nanas asam manis segar.', img: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80' },
+            { id: 'a1', name: 'Ayam Sambal Rempah Cobek', category: 'ayam', price: 37000, tag: 'Best Seller', desc: 'Ayam goreng empuk disajikan dengan racikan sambal cobek pedas gurih.', img: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80' },
+            { id: 'a2', name: 'Bebek Goreng Kremes', category: 'ayam', price: 42000, tag: 'Gurih', desc: 'Bebek empuk bumbu ungkep rempah disajikan dengan kremesan garing.', img: 'https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?auto=format&fit=crop&w=600&q=80' },
+            { id: 'l1', name: 'Lele Cobek Mertua', category: 'lele', price: 33000, tag: 'Pedas Mantap', desc: 'Paket nasi lele goreng dengan sambal cobek pedas mantap.', img: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80' },
+            { id: 'p1', name: 'Pindang Patin Kuah Segar', category: 'lele', price: 48500, tag: 'Rekomendasi', desc: 'Sup ikan patin kuah bening rempah asam gurih menyegarkan.', img: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80' },
+            { id: 'b1', name: 'Paket Bancakan Rombongan (4 Pax)', category: 'bancakan', price: 290000, tag: 'Hemat', desc: 'Paket lengkap Gurame, Ayam, Nasi, Sayur Asem, Sambal, & Es Teh untuk 4 orang.', img: 'https://images.unsplash.com/photo-1610057099431-d73a1c9d2f2f?auto=format&fit=crop&w=600&q=80' },
+            { id: 'm1', name: 'Es Teh Manis Nusantara Jumbo', category: 'minuman', price: 10000, tag: 'Segar', desc: 'Teh manis dingin porsi jumbo penawar pedas.', img: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80' }
+        ];
+
+        let cart = [];
+        let currentCategory = 'all';
+
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById('page-' + pageId);
+            if(target) target.classList.add('active');
+
+            document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+            const activeNav = document.getElementById('nav-' + pageId);
+            if(activeNav) activeNav.classList.add('active');
+
+            document.getElementById('mainNav').classList.remove('mobile-active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileNav() {
+            document.getElementById('mainNav').classList.toggle('mobile-active');
+        }
+
+        function renderMenu(items) {
+            const container = document.getElementById('menuGrid');
+            container.innerHTML = '';
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card-3d';
+                card.innerHTML = `
+                    <span class="card-tag">${item.tag}</span>
+                    <div class="card-img-wrapper"><img src="${item.img}" alt="${item.name}"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">${item.name}</h3>
+                        <p class="card-desc">${item.desc}</p>
+                        <div class="card-footer-action">
+                            <div class="card-price">Rp ${(item.price/1000).toFixed(1)}k <span>/ porsi</span></div>
+                            <button class="add-cart-btn" onclick="addToCart('${item.id}')">➕ Tambah</button>
+                        </div>
+                    </div>`;
+                container.appendChild(card);
+            });
+        }
+
+        function filterCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterMenuItems();
+        }
+
+        function filterMenuItems() {
+            const query = document.getElementById('menuSearchInput').value.toLowerCase();
+            const filtered = menuData.filter(item => {
+                const matchCat = (currentCategory === 'all' || item.category === currentCategory);
+                const matchQuery = item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query);
+                return matchCat && matchQuery;
+            });
+            renderMenu(filtered);
+        }
+
+        function addToCart(itemId) {
+            const item = menuData.find(m => m.id === itemId);
+            if(!item) return;
+            const existing = cart.find(c => c.id === itemId);
+            if(existing) existing.qty++;
+            else cart.push({ ...item, qty: 1 });
+            updateCartUI();
+            showToast(`"${item.name}" ditambahkan ke keranjang!`);
+        }
+
+        function updateCartQty(itemId, delta) {
+            const index = cart.findIndex(c => c.id === itemId);
+            if(index > -1) {
+                cart[index].qty += delta;
+                if(cart[index].qty <= 0) cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+            const container = document.getElementById('cartItemsContainer');
+            container.innerHTML = '';
+            let subtotal = 0;
+
+            if(cart.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color: var(--text-muted); padding: 1.5rem;">Keranjang Anda masih kosong.</p>';
+            } else {
+                cart.forEach(item => {
+                    subtotal += item.price * item.qty;
+                    const row = document.createElement('div');
+                    row.className = 'flex-between';
+                    row.style.cssText = 'background: rgba(15,8,4,0.7); padding: 8px 12px; border-radius: 10px; margin-bottom: 8px; border: 1px solid var(--glass-border);';
+                    row.innerHTML = `
+                        <div>
+                            <h5 style="color: var(--logo-yellow); font-size: 0.9rem;">${item.name}</h5>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Rp ${item.price.toLocaleString('id-ID')}</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <button style="background: var(--wood-brown); border: none; color: #fff; width: 22px; height: 22px; border-radius: 4px;" onclick="updateCartQty('${item.id}', -1)">-</button>
+                            <span style="font-weight: 800; font-size: 0.85rem;">${item.qty}</span>
+                            <button style="background: var(--wood-brown); border: none; color: #fff; width: 22px; height: 22px; border-radius: 4px;" onclick="updateCartQty('${item.id}', 1)">+</button>
+                        </div>`;
+                    container.appendChild(row);
+                });
+            }
+            document.getElementById('cartSubtotal').innerText = 'Rp ' + subtotal.toLocaleString('id-ID');
+        }
+
+        function checkoutCartToWA() {
+            if(cart.length === 0) return alert('Keranjang Anda kosong!');
+            let msg = 'Halo Kampung Kecil Cirebon, saya ingin pesan online via website:%0A%0A';
+            let subtotal = 0;
+            cart.forEach(item => {
+                const total = item.price * item.qty;
+                subtotal += total;
+                msg += `• *${item.name}* (${item.qty}x) = Rp ${total.toLocaleString('id-ID')}%0A`;
+            });
+            msg += `%0A*TOTAL PESANAN*: Rp ${subtotal.toLocaleString('id-ID')}`;
+            window.open(`https://wa.me/628119739222?text=${msg}`, '_blank');
+        }
+
+        function calculateEventCost() {
+            const pkgPrice = parseInt(document.getElementById('calcPackage').value);
+            const pax = parseInt(document.getElementById('calcPax').value) || 0;
+            const foodCost = pkgPrice * pax;
+            let addonsCost = 0;
+
+            if(document.getElementById('addVIP').checked) addonsCost += 250000;
+            if(document.getElementById('addSound').checked) addonsCost += 150000;
+            if(document.getElementById('addDecoration').checked) addonsCost += 350000;
+
+            const total = foodCost + addonsCost;
+            document.getElementById('summaryFoodCost').innerText = 'Rp ' + foodCost.toLocaleString('id-ID');
+            document.getElementById('summaryAddonsCost').innerText = 'Rp ' + addonsCost.toLocaleString('id-ID');
+            document.getElementById('summaryTotalVal').innerText = 'Rp ' + total.toLocaleString('id-ID');
+        }
+
+        function bookEventFromCalc() {
+            const eventType = document.getElementById('calcEventType').selectedOptions[0].text;
+            const pax = document.getElementById('calcPax').value;
+            const total = document.getElementById('summaryTotalVal').innerText;
+            openBookingModal();
+            document.getElementById('bookNotes').value = `Estimasi Event: ${eventType} (${pax} pax) - Total: ${total}`;
+        }
+
+        function openCartModal() { document.getElementById('cartModal').classList.add('active'); }
+        function closeCartModal() { document.getElementById('cartModal').classList.remove('active'); }
+        function openBookingModal() { document.getElementById('bookingModal').classList.add('active'); }
+        function closeBookingModal() { document.getElementById('bookingModal').classList.remove('active'); }
+
+        function showToast(msg) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast-msg';
+            toast.innerHTML = `<span>✅</span> ${msg}`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function toggleFaq(elem) { elem.classList.toggle('active'); }
+
+        const bgAudio = document.getElementById('bgAudio');
+        let isPlaying = false;
+        function toggleAudio() {
+            const btn = document.getElementById('audioToggleBtn');
+            if(isPlaying) {
+                bgAudio.pause();
+                btn.innerText = '🔈';
+                isPlaying = false;
+            } else {
+                bgAudio.play().then(() => {
+                    btn.innerText = '🔊';
+                    isPlaying = true;
+                }).catch(() => {});
+            }
+        }
+
+        function submitBookingWA(e) {
+            e.preventDefault();
+            const name = document.getElementById('bookName').value;
+            const date = document.getElementById('bookDate').value;
+            const time = document.getElementById('bookTime').value;
+            const guests = document.getElementById('bookGuests').value;
+            const notes = document.getElementById('bookNotes').value;
+
+            const text = `Halo Kampung Kecil Cirebon, saya ingin reservasi saung:%0A%0A` +
+                         `• *Nama*: ${encodeURIComponent(name)}%0A` +
+                         `• *Tanggal*: ${encodeURIComponent(date)}%0A` +
+                         `• *Jam*: ${encodeURIComponent(time)} WIB%0A` +
+                         `• *Tamu*: ${encodeURIComponent(guests)} Orang%0A` +
+                         `• *Catatan*: ${encodeURIComponent(notes)}`;
+
+            window.open(`https://wa.me/628119739222?text=${text}`, '_blank');
+            closeBookingModal();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMenu(menuData);
+            calculateEventCost();
+        });
+    </script>
+</body>
+</html>
